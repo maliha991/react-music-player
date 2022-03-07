@@ -21,6 +21,11 @@ function App() {
 		animationPercentage: 0,
 	});
 
+	const background = {
+		minHeight: `100vh`,
+		backgroundImage: `linear-gradient(120deg, ${currentSong.backgroundColor[0]}, ${currentSong.backgroundColor[1]})`,
+	};
+
 	const timeUpdateHandler = (event) => {
 		const currentTime = event.target.currentTime;
 		const duration = event.target.duration;
@@ -39,7 +44,10 @@ function App() {
 	};
 
 	return (
-		<div className={`App ${libraryStatus ? "library-active" : ""}`}>
+		<div
+			style={background}
+			className={`App ${libraryStatus ? "library-active" : ""}`}
+		>
 			<Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
 			<Song currentSong={currentSong} />
 			<Player
